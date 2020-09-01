@@ -19,5 +19,15 @@ x = preprocess_input(x)
 # 預測，取得features，維度為 (1,7,7,512)
 features = model.predict(x)
 # 取得前三個最可能的類別及機率
+
 print('Predicted:', decode_predictions(features, top=3)[0])
-print(model.summary())
+l = decode_predictions(features, top=1)[0]
+def find_match_ans(l):
+    sl = str(l)
+    index2_find = sl.split("',")
+    ans = index2_find[1][2:len(index2_find[1])]
+    #print(index2_find)
+    return ans
+ans = find_match_ans(l)
+print(ans)
+#print(model.summary())
